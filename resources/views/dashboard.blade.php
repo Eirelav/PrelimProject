@@ -21,6 +21,12 @@
 			<div class="info">
 				Posted by Val on 4 Jan 2017
 			</div>
+			<div class="interaction">
+				<a href="#">Like</a>
+				<a href="#">Dislike</a>
+				<a href="#">Edit</a>
+				<a href="#">Delete</a>
+			</div>
 		</article>
 	</div>
 </section>
