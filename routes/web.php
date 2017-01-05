@@ -11,20 +11,32 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function(){
+Route::group(['middleware' => ['web']], function()
+{
+
 	Route::get('/',function(){
 		return view('welcome');
 	});
 
 	Route::post('/signup', [
-		'uses' => 'UserController@postSignUp', 'as' => 'signup'
+		'uses' => 'UserController@postSignUp', 
+		'as' => 'signup'
 		]);
 
 	Route::post('/signin', [
-		'uses' => 'UserController@postSignIn', 'as' => 'signin'
+		'uses' => 'UserController@postSignIn', 
+		'as' => 'signin'
 		]);
 
 	Route::get('/dashboard', [
-		'uses' => 'UserController@getDashBoard', 'as' => 'dashboard']);
+		'uses' => 'UserController@getDashBoard', 
+		'as' => 'dashboard'
+		]);
+
+	Route::post('/createpost', [
+		'uses' => 'PostController@postCreatePost',
+		'as' => 'post.create'
+		]);
+
 });
 
