@@ -29,13 +29,20 @@ Route::group(['middleware' => ['web']], function()
 		]);
 
 	Route::get('/dashboard', [
-		'uses' => 'UserController@getDashBoard', 
+		'uses' => 'PostController@getDashBoard', 
 		'as' => 'dashboard'
+		'middleware' => 'auth'
 		]);
 
 	Route::post('/createpost', [
 		'uses' => 'PostController@postCreatePost',
 		'as' => 'post.create'
+		'middleware' => 'auth'
+		]);
+	Route::get('/post-delete/{post_id}', [
+		'uses' => 'PostController@pgetDeletePost',
+		'as' => 'post.delete()'
+		'middleware' => 'auth'
 		]);
 
 });

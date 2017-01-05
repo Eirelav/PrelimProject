@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller 
 {
+	public function getDashBoard()
+	{
+
+		$posts = Post::all();
+		return view('dashboard', ['posts' =>$posts]);
+	}
 
 	public function postCreatePost(Request $request)
 	{
@@ -18,12 +24,19 @@ class PostController extends Controller
 
 		$post = new Post();
 		$post->body = $request['body'];
-		$message = 'The was an error';
+		$message = 'There was an error';
 
 		if ($request->user()->posts()->save($post))
 		{
 			$message = 'Post successfully created!';
 		}
 		return redirect()->route('dashboard')->with(['message' => $message]);
+	}
+
+	public function getDeletePost($post_id)
+	{
+		$post = Post::where('id',$post_id) ->first();
+		$post -> delete();
+		retun redirect()->route('dashboard')->with(['message' => 'Successfully deleted!']);
 	}
 }

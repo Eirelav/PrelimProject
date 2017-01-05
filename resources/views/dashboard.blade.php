@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+ 
+@include('includes.message-blocked')
+
 	<section class="row new-post">
 		<div class="col-md-6 col-md-offset-3">
 			<header><h3>What do you have to say?</h3></header>
@@ -17,46 +20,24 @@
 <section class="row posts">
 	<div class="col-md-6 col-md-offset-3">
 		<header><h3>What other people say...</h3></header>
+		
+		@foreach($posts as $post)
 		<article class="post">
-			<p>Good Afternoon and Happy new year to all.Good Afternoon and Happy new year to all.</p>
+			<p>{{$post->body}}</p>
 			<div class="info">
-				Posted by Val on 4 Jan 2017
+				Posted by {{$post->user->first_name}} on {{$post->created_at}}
 			</div>
 			<div class="interaction">
 				<a href="#">Like</a> |
 				<a href="#">Dislike</a> |
 				<a href="#">Edit</a> |
-				<a href="#">Delete</a>
+				<a href="{{route('post.delete', ['post_id' => $post->id])}}">Delete</a>
 			</div>
 		</article>
+		@endforeach
 
-		<article class="post">
-			<p>Hello.Hello.Hello.Hello.Hello.Hello.</p>		
-			<div class="info">
-				Posted by Val on 4 Jan 2017
-			</div>
-			<div class="interaction">
-				<a href="#">Like</a> |
-				<a href="#">Dislike</a> |
-				<a href="#">Edit</a> |
-				<a href="#">Delete</a>
-			</div>
-		</article>
-
-		<article class="post">
-			<p>MAgandang BUhay</p>
-			<div class="info">
-				Posted by Val on 4 Jan 2017
-			</div>
-			<div class="interaction">
-				<a href="#">Like</a> |
-				<a href="#">Dislike</a> |
-				<a href="#">Edit</a> |
-				<a href="#">Delete</a>
-			</div>
-		</article>
-
-	</div>
+		
+		</div>
 </section>
 
 @endsection
