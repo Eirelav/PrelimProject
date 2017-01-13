@@ -19,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      *
+     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
      * @return void
      */
     public function boot()
